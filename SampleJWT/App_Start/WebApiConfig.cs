@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SampleJWT.ValueProviders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ValueProviders;
 
 namespace SampleJWT
 {
@@ -11,6 +13,8 @@ namespace SampleJWT
         {
             // Web API configuration and services
             config.Filters.Add(new AuthorizeAttribute());
+
+            config.Services.Add(typeof(ValueProviderFactory), new CookieValueProviderFactory());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
